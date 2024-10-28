@@ -155,12 +155,15 @@ def plot_learning_curve(x, scores, eps_history, filename):
 
 
 env = gym.make("CartPole-v1")
-agent = Agent(
-    input_dims=env.observation_space.shape, n_actions=env.action_space.n, lr=0.0001
-)
-mode = "render_test_model"
+mode = "train_continue"
 
 if mode == "train_new":
+    agent = Agent(
+        epsilon=1.0,
+        input_dims=env.observation_space.shape,
+        n_actions=env.action_space.n,
+        lr=0.0001,
+    )
     n_games = 1000
     scores = []
     eps_history = []
@@ -193,6 +196,12 @@ if mode == "train_new":
     )
 
 if mode == "train_continue":
+    agent = Agent(
+        epsilon=0.1,
+        input_dims=env.observation_space.shape,
+        n_actions=env.action_space.n,
+        lr=0.0001,
+    )
     agent.load_model(
         "D:\ppfiles\myprograms\python_programs\my_ml_study\deep_q_study\cartpole_dueling_deep_q_network.pth"
     )
@@ -229,6 +238,12 @@ if mode == "train_continue":
 
 
 if mode == "render_test_model":
+    agent = Agent(
+        epsilon=0.0,
+        input_dims=env.observation_space.shape,
+        n_actions=env.action_space.n,
+        lr=0.0001,
+    )
     agent.load_model(
         "D:\ppfiles\myprograms\python_programs\my_ml_study\deep_q_study\cartpole_dueling_deep_q_network.pth"
     )
