@@ -6,6 +6,7 @@ import torch.optim as optim
 import torch as T
 import matplotlib.pyplot as plt
 import random
+import os
 from collections import deque
 
 
@@ -155,7 +156,7 @@ def plot_learning_curve(x, scores, eps_history, filename):
 
 
 env = gym.make("CartPole-v1")
-mode = "train_continue"
+mode = "render_test_model"
 
 if mode == "train_new":
     agent = Agent(
@@ -244,9 +245,9 @@ if mode == "render_test_model":
         n_actions=env.action_space.n,
         lr=0.0001,
     )
-    agent.load_model(
-        "D:\ppfiles\myprograms\python_programs\my_ml_study\deep_q_study\cartpole_dueling_deep_q_network.pth"
-    )
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    model_path = os.path.join(script_dir, "cartpole_dueling_deep_q_network.pth")
+    agent.load_model(model_path)
 
     # 测试加载的模型
     env = gym.make("CartPole-v1", render_mode="human")
