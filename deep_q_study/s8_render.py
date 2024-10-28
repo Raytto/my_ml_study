@@ -150,7 +150,7 @@ def plot_learning_curve(x, scores, eps_history, filename):
     ax2.yaxis.set_label_position("right")
     ax2.tick_params(axis="y", colors="C1")
 
-    # plt.savefig(filename)
+    plt.savefig(filename)
     return plt
 
 
@@ -188,13 +188,15 @@ if mode == "train_new":
                     f"episode {i} score {score} average score {avg_score} epsilon {agent.epsilon}"
                 )
 
-    agent.save_model("cartpole_dueling_deep_q_network.pth")
+    agent.save_model(
+        "D:\ppfiles\myprograms\python_programs\my_ml_study\deep_q_study\cartpole_dueling_deep_q_network.pth"
+    )
 
 if mode == "train_continue":
     agent.load_model(
         "D:\ppfiles\myprograms\python_programs\my_ml_study\deep_q_study\cartpole_dueling_deep_q_network.pth"
     )
-    n_games = 2000
+    n_games = 5000
     scores = []
     eps_history = []
     for i in range(n_games):
