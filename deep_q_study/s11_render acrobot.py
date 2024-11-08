@@ -239,8 +239,6 @@ if mode == "train_continue":
             if i % 1000 == 0:
                 agent.save_model(model_path)
 
-    
-
 
 if mode == "render_test_model":
     env = gym.make("Acrobot-v1", render_mode="human")
