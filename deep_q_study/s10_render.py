@@ -156,7 +156,7 @@ def plot_learning_curve(x, scores, eps_history, filename):
 
 
 env = gym.make("CartPole-v1")
-mode = "render_test_model"
+mode = "train_new"
 
 if mode == "train_new":
     agent = Agent(
