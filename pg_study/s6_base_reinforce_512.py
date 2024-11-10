@@ -30,9 +30,9 @@ env.step(0)
 class PolicyNetwork(nn.Module):
     def __init__(self, input_dim, output_dim):
         super(PolicyNetwork, self).__init__()
-        self.fc1 = nn.Linear(input_dim, 256)
-        self.fc2 = nn.Linear(256, 256)  # 隐藏层
-        self.fc3 = nn.Linear(256, output_dim)  # 输出动作概率
+        self.fc1 = nn.Linear(input_dim, 512)
+        self.fc2 = nn.Linear(512, 512)  # 隐藏层
+        self.fc3 = nn.Linear(512, output_dim)  # 输出动作概率
         self.device = T.device("cuda" if T.cuda.is_available() else "cpu")
         self.to(self.device)
 
@@ -79,8 +79,8 @@ num_episodes = 5000
 learning_rate = 1e-5
 
 # 学习进度保存路径
-model_path = "./save/s5_policy_net.pth"
-avg_path = "./save/s5_avg_rewards.pth"
+model_path = "./save/s6_policy_net.pth"
+avg_path = "./save/s6_avg_rewards.pth"
 
 # %%
 policy_net = PolicyNetwork(input_dim, output_dim)
